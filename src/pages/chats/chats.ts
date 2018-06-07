@@ -1,3 +1,4 @@
+import { Chat, MessageType } from './../../models';
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { Observable } from 'rxjs';
@@ -9,12 +10,12 @@ import * as moment from 'moment';
   templateUrl: 'chats.html'
 })
 export class ChatsPage {
-  chats: Observable<any[]>;
+  chats: Observable<Chat[]>;
 
   constructor(public navCtrl: NavController, public navParams: NavParams) {
     this.chats = this.findChats();
   }
-  private findChats(): Observable<any[]> {
+  private findChats(): Observable<Chat[]> {
     return Observable.of([
       {
         _id: '0',
@@ -24,7 +25,8 @@ export class ChatsPage {
           content: 'You on your way?',
           createdAt: moment()
             .subtract(1, 'hours')
-            .toDate()
+            .toDate(),
+          type: MessageType.TEXT
         }
       },
       {
@@ -35,7 +37,8 @@ export class ChatsPage {
           content: "Hey, it's me",
           createdAt: moment()
             .subtract(2, 'hours')
-            .toDate()
+            .toDate(),
+          type: MessageType.TEXT
         }
       },
       {
@@ -46,7 +49,8 @@ export class ChatsPage {
           content: 'I should buy a boat',
           createdAt: moment()
             .subtract(1, 'days')
-            .toDate()
+            .toDate(),
+          type: MessageType.TEXT
         }
       },
       {
@@ -57,7 +61,8 @@ export class ChatsPage {
           content: 'Look at my mukluks!',
           createdAt: moment()
             .subtract(4, 'days')
-            .toDate()
+            .toDate(),
+          type: MessageType.TEXT
         }
       },
       {
@@ -68,7 +73,8 @@ export class ChatsPage {
           content: 'This is wicked good ice cream.',
           createdAt: moment()
             .subtract(2, 'weeks')
-            .toDate()
+            .toDate(),
+          type: MessageType.TEXT
         }
       }
     ]);
