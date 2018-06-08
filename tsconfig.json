@@ -16,7 +16,7 @@
     "skipLibCheck": true,
     "stripInternal": true,
     "noImplicitAny": false,
-    "types": ["meteor-typings", "@types/underscore"]
+    "types": ["@types/underscore"]
   },
   "include": ["src/**/*.ts", "api/**/*.ts"],
   "exclude": [
