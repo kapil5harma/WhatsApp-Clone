@@ -1,4 +1,4 @@
-import { Chat, MessageType } from './../../models';
+import { Chat, MessageType } from 'api/models';
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { Observable } from 'rxjs';
