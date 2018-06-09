@@ -5,8 +5,10 @@
     "declaration": false,
     "emitDecoratorMetadata": true,
     "experimentalDecorators": true,
+    "removeComments": false,
     "lib": ["dom", "es2015"],
     "module": "commonjs",
+    "isolatedModules": false,
     "moduleResolution": "node",
     "paths": {
       "api/*": ["./api/server/*"]
