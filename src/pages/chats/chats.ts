@@ -1,3 +1,4 @@
+import { MessagesPage } from './../messages/messages';
 import { Component, OnInit } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { Chats, Messages } from './../../../api/server/collections';
@@ -12,7 +13,7 @@ import { Observable } from 'rxjs';
 export class ChatsPage implements OnInit {
   chats;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {}
+  constructor(private navCtrl: NavController, public navParams: NavParams) {}
 
   ngOnInit() {
     this.chats = Chats.find({}).mergeMap((chats: Chat[]) =>
@@ -28,6 +29,10 @@ export class ChatsPage implements OnInit {
       )
     );
     // .zone(); // Commented this line as it throws error.
+  }
+
+  showMessages(chat): void {
+    this.navCtrl.push(MessagesPage, { chat });
   }
 
   removeChat(chat: Chat): void {
