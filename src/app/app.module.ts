@@ -1,3 +1,4 @@
+import { MessagesPage } from './../pages/messages/messages';
 import { ChatsPage } from './../pages/chats/chats';
 import { BrowserModule } from '@angular/platform-browser';
 import { ErrorHandler, NgModule } from '@angular/core';
@@ -9,10 +10,10 @@ import { MomentModule } from 'angular2-moment';
 import { MyApp } from './app.component';
 
 @NgModule({
-  declarations: [MyApp, ChatsPage],
+  declarations: [MyApp, ChatsPage, MessagesPage],
   imports: [BrowserModule, IonicModule.forRoot(MyApp), MomentModule],
   bootstrap: [IonicApp],
-  entryComponents: [MyApp, ChatsPage],
+  entryComponents: [MyApp, ChatsPage, MessagesPage],
   providers: [
     StatusBar,
     SplashScreen,
