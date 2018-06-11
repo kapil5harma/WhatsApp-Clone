@@ -4,6 +4,8 @@ import { Chat, Message, MessageType } from 'api/models';
 import { Observable } from 'rxjs';
 import { Messages } from 'api/collections';
 import { MeteorObservable } from 'meteor-rxjs';
+import * as moment from 'moment';
+import * as _ from 'lodash';
 
 @IonicPage()
 @Component({
@@ -15,6 +17,7 @@ export class MessagesPage implements OnInit, OnDestroy {
   title: string;
   picture: string;
   messages: Observable<Message[]>;
+  messagesDayGroups;
   message: string = '';
   autoScroller: MutationObserver;
   scrollOffset = 0;
@@ -45,6 +48,7 @@ export class MessagesPage implements OnInit, OnDestroy {
 
   ngOnInit() {
     this.autoScroller = this.autoScroll();
+    this.subscribeMessages();
 
     let isEven = false;
 
@@ -63,6 +67,49 @@ export class MessagesPage implements OnInit, OnDestroy {
 
   ngOnDestroy() {
     this.autoScroller.disconnect();
+  }
+
+  subscribeMessages() {
+    this.scrollOffset = this.scroller.scrollHeight;
+    this.messagesDayGroups = this.findMessagesDayGroups();
+  }
+
+  findMessagesDayGroups() {
+    let isEven = false;
+
+    return Messages.find(
+      {
+        chatId: this.selectedChat._id
+      },
+      {
+        sort: { createdAt: 1 }
+      }
+    ).map((messages: Message[]) => {
+      const format = 'D MMMM Y';
+
+      // Compose missing data that we would like to show in the view
+      messages.forEach(message => {
+        message.ownership = isEven ? 'mine' : 'other';
+        isEven = !isEven;
+
+        return message;
+      });
+
+      // Group by creation day
+      const groupedMessages = _.groupBy(messages, message => {
+        return moment(message.createdAt).format(format);
+      });
+
+      // Transform dictionary into an array since Angular's view engine doesn't know how
+      // to iterate through it
+      return Object.keys(groupedMessages).map((timestamp: string) => {
+        return {
+          timestamp: timestamp,
+          messages: groupedMessages[timestamp],
+          today: moment().format(format) === timestamp
+        };
+      });
+    });
   }
 
   autoScroll(): MutationObserver {
