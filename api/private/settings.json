@@ -1,0 +1,8 @@
+{
+  "accounts-phone": {
+    "verificationWaitTime": 0,
+    "verificationRetriesWaitTime": 0,
+    "adminPhoneNumbers": ["9650434769"],
+    "phoneVerificationMasterCode": "123456"
+  }
+}
