@@ -18,7 +18,11 @@
     "skipLibCheck": true,
     "stripInternal": true,
     "noImplicitAny": false,
-    "types": ["@types/underscore"]
+    "types": [
+      "@types/underscore",
+      "@types/meteor",
+      "@types/meteor-accounts-phone"
+    ]
   },
   "include": ["src/**/*.ts", "api/**/*.ts"],
   "exclude": [
