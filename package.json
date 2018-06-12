@@ -5,6 +5,7 @@
   "homepage": "http://ionicframework.com/",
   "private": true,
   "scripts": {
+    "api": "cd api && meteor run --settings private/settings.json",
     "clean": "ionic-app-scripts clean",
     "build": "ionic-app-scripts build",
     "lint": "ionic-app-scripts lint",
@@ -43,6 +44,7 @@
     "@ionic/app-scripts": "3.1.9",
     "@types/lodash": "^4.14.109",
     "@types/meteor": "^1.4.15",
+    "@types/meteor-accounts-phone": "0.0.5",
     "@types/underscore": "^1.8.8",
     "meteor-typings": "^1.4.1",
     "tmp": "0.0.33",
