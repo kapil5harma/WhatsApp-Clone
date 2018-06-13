@@ -7,13 +7,7 @@ import {
   Alert
 } from 'ionic-angular';
 import { PhoneService } from '../../services/phone';
-
-/**
- * Generated class for the LoginPage page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
- */
+import { VerificationPage } from './../verification/verification';
 
 @IonicPage()
 @Component({
@@ -63,6 +57,11 @@ export class LoginPage {
       .dismiss()
       .then(() => {
         return this.phoneService.verify(this.phone);
+      })
+      .then(() => {
+        this.navCtrl.push(VerificationPage, {
+          phone: this.phone
+        });
       })
       .catch(e => {
         this.handleError(e);
