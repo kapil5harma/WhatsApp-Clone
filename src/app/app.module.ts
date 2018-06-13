@@ -9,12 +9,13 @@ import { MomentModule } from 'angular2-moment';
 
 import { MyApp } from './app.component';
 import { PhoneService } from '../services/phone';
+import { LoginPage } from '../pages/login/login';
 
 @NgModule({
-  declarations: [MyApp, ChatsPage, MessagesPage],
+  declarations: [MyApp, ChatsPage, MessagesPage, LoginPage],
   imports: [BrowserModule, IonicModule.forRoot(MyApp), MomentModule],
   bootstrap: [IonicApp],
-  entryComponents: [MyApp, ChatsPage, MessagesPage],
+  entryComponents: [MyApp, ChatsPage, MessagesPage, LoginPage],
   providers: [
     StatusBar,
     SplashScreen,
