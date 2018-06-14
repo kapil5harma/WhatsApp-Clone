@@ -1,3 +1,4 @@
+import { ProfilePage } from './../profile/profile';
 import { Component, OnInit } from '@angular/core';
 import {
   IonicPage,
@@ -34,9 +35,20 @@ export class VerificationPage implements OnInit {
   }
 
   verify(): void {
-    this.phoneService.login(this.phone, this.code).catch(e => {
-      this.handleError(e);
-    });
+    this.phoneService
+      .login(this.phone, this.code)
+      .then(() => {
+        this.navCtrl.setRoot(
+          ProfilePage,
+          {},
+          {
+            animate: true
+          }
+        );
+      })
+      .catch(e => {
+        this.handleError(e);
+      });
   }
 
   handleError(e: Error): void {
