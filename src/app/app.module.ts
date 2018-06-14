@@ -12,9 +12,17 @@ import { MessagesPage } from './../pages/messages/messages';
 import { PhoneService } from '../services/phone';
 import { LoginPage } from '../pages/login/login';
 import { VerificationPage } from './../pages/verification/verification';
+import { ProfilePage } from './../pages/profile/profile';
 
 @NgModule({
-  declarations: [MyApp, ChatsPage, MessagesPage, LoginPage, VerificationPage],
+  declarations: [
+    MyApp,
+    ChatsPage,
+    MessagesPage,
+    LoginPage,
+    VerificationPage,
+    ProfilePage
+  ],
   imports: [BrowserModule, IonicModule.forRoot(MyApp), MomentModule],
   bootstrap: [IonicApp],
   entryComponents: [
@@ -22,7 +30,8 @@ import { VerificationPage } from './../pages/verification/verification';
     ChatsPage,
     MessagesPage,
     LoginPage,
-    VerificationPage
+    VerificationPage,
+    ProfilePage
   ],
   providers: [
     StatusBar,
