@@ -1,9 +1,15 @@
 import { MessagesPage } from './../messages/messages';
 import { Component, OnInit } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import {
+  IonicPage,
+  NavController,
+  NavParams,
+  PopoverController
+} from 'ionic-angular';
 import { Chats, Messages } from './../../../api/server/collections';
 import { Chat } from 'api/models';
 import { Observable } from 'rxjs';
+import { ChatOptionsComponent } from '../../components/chat-options/chat-options';
 
 @IonicPage()
 @Component({
@@ -13,7 +19,11 @@ import { Observable } from 'rxjs';
 export class ChatsPage implements OnInit {
   chats;
 
-  constructor(private navCtrl: NavController, public navParams: NavParams) {}
+  constructor(
+    private navCtrl: NavController,
+    public navParams: NavParams,
+    private popoverCtrl: PopoverController
+  ) {}
 
   ngOnInit() {
     this.chats = Chats.find({}).mergeMap((chats: Chat[]) =>
@@ -29,6 +39,18 @@ export class ChatsPage implements OnInit {
       )
     );
     // .zone(); // Commented this line as it throws error.
+  }
+
+  showOptions(): void {
+    const popover = this.popoverCtrl.create(
+      ChatOptionsComponent,
+      {},
+      {
+        cssClass: 'options-popover chats-options-popover'
+      }
+    );
+
+    popover.present();
   }
 
   showMessages(chat): void {
