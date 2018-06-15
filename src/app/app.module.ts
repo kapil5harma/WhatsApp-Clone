@@ -13,6 +13,7 @@ import { PhoneService } from '../services/phone';
 import { LoginPage } from '../pages/login/login';
 import { VerificationPage } from './../pages/verification/verification';
 import { ProfilePage } from './../pages/profile/profile';
+import { ChatOptionsComponent } from '../components/chat-options/chat-options';
 
 @NgModule({
   declarations: [
@@ -21,7 +22,8 @@ import { ProfilePage } from './../pages/profile/profile';
     MessagesPage,
     LoginPage,
     VerificationPage,
-    ProfilePage
+    ProfilePage,
+    ChatOptionsComponent
   ],
   imports: [BrowserModule, IonicModule.forRoot(MyApp), MomentModule],
   bootstrap: [IonicApp],
@@ -31,7 +33,8 @@ import { ProfilePage } from './../pages/profile/profile';
     MessagesPage,
     LoginPage,
     VerificationPage,
-    ProfilePage
+    ProfilePage,
+    ChatOptionsComponent
   ],
   providers: [
     StatusBar,
