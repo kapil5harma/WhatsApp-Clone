@@ -1,8 +1,11 @@
 import { NgModule } from '@angular/core';
 import { ChatOptionsComponent } from './chat-options/chat-options';
+import { NewChatComponent } from './new-chat/new-chat';
 @NgModule({
-	declarations: [ChatOptionsComponent],
+	declarations: [ChatOptionsComponent,
+    NewChatComponent],
 	imports: [],
-	exports: [ChatOptionsComponent]
+	exports: [ChatOptionsComponent,
+    NewChatComponent]
 })
 export class ComponentsModule {}
