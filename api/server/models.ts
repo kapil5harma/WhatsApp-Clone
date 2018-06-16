@@ -9,6 +9,10 @@ export enum MessageType {
   TEXT = <any>'text'
 }
 
+export interface User extends Meteor.User {
+  profile?: Profile;
+}
+
 export interface Chat {
   _id?: string;
   title?: string;
