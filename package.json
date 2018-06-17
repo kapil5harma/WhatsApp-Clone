@@ -45,6 +45,7 @@
     "@types/lodash": "^4.14.109",
     "@types/meteor": "^1.4.15",
     "@types/meteor-accounts-phone": "0.0.5",
+    "@types/meteor-publish-composite": "0.0.34",
     "@types/underscore": "^1.8.8",
     "meteor-typings": "^1.4.1",
     "tmp": "0.0.33",
