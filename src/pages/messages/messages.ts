@@ -1,5 +1,11 @@
+import { MessagesOptionsComponent } from './../../components/messages-options/messages-options';
 import { Component, OnInit, OnDestroy, ElementRef } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import {
+  IonicPage,
+  NavController,
+  NavParams,
+  PopoverController
+} from 'ionic-angular';
 import { Chat, Message, MessageType } from 'api/models';
 import { Observable } from 'rxjs';
 import { Messages } from 'api/collections';
@@ -26,7 +32,8 @@ export class MessagesPage implements OnInit, OnDestroy {
   constructor(
     public navCtrl: NavController,
     public navParams: NavParams,
-    private ele: ElementRef
+    private ele: ElementRef,
+    private popoverCtrl: PopoverController
   ) {
     this.selectedChat = <Chat>navParams.get('chat');
     this.title = this.selectedChat.title;
@@ -74,6 +81,20 @@ export class MessagesPage implements OnInit, OnDestroy {
   subscribeMessages() {
     this.scrollOffset = this.scroller.scrollHeight;
     this.messagesDayGroups = this.findMessagesDayGroups();
+  }
+
+  showOptions(): void {
+    const popover = this.popoverCtrl.create(
+      MessagesOptionsComponent,
+      {
+        chat: this.selectedChat
+      },
+      {
+        cssClass: 'options-popover messages-options-popover'
+      }
+    );
+
+    popover.present();
   }
 
   findMessagesDayGroups() {
