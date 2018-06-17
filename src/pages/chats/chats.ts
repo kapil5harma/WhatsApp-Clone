@@ -1,10 +1,12 @@
+import { NewChatComponent } from './../../components/new-chat/new-chat';
 import { MessagesPage } from './../messages/messages';
 import { Component, OnInit } from '@angular/core';
 import {
   IonicPage,
   NavController,
   NavParams,
-  PopoverController
+  PopoverController,
+  ModalController
 } from 'ionic-angular';
 import { Chats, Messages } from './../../../api/server/collections';
 import { Chat } from 'api/models';
@@ -22,8 +24,14 @@ export class ChatsPage implements OnInit {
   constructor(
     private navCtrl: NavController,
     public navParams: NavParams,
-    private popoverCtrl: PopoverController
+    private popoverCtrl: PopoverController,
+    private modalCtrl: ModalController
   ) {}
+
+  addChat(): void {
+    const modal = this.modalCtrl.create(NewChatComponent);
+    modal.present();
+  }
 
   ngOnInit() {
     this.chats = Chats.find({}).mergeMap((chats: Chat[]) =>
