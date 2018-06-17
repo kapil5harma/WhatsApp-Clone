@@ -14,6 +14,7 @@ import { LoginPage } from '../pages/login/login';
 import { VerificationPage } from './../pages/verification/verification';
 import { ProfilePage } from './../pages/profile/profile';
 import { ChatOptionsComponent } from '../components/chat-options/chat-options';
+import { NewChatComponent } from './../components/new-chat/new-chat';
 
 @NgModule({
   declarations: [
@@ -23,7 +24,8 @@ import { ChatOptionsComponent } from '../components/chat-options/chat-options';
     LoginPage,
     VerificationPage,
     ProfilePage,
-    ChatOptionsComponent
+    ChatOptionsComponent,
+    NewChatComponent
   ],
   imports: [BrowserModule, IonicModule.forRoot(MyApp), MomentModule],
   bootstrap: [IonicApp],
@@ -34,7 +36,8 @@ import { ChatOptionsComponent } from '../components/chat-options/chat-options';
     LoginPage,
     VerificationPage,
     ProfilePage,
-    ChatOptionsComponent
+    ChatOptionsComponent,
+    NewChatComponent
   ],
   providers: [
     StatusBar,
