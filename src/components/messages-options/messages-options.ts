@@ -6,7 +6,7 @@ import {
   ViewController
 } from 'ionic-angular';
 import { MeteorObservable } from 'meteor-rxjs';
-import { ChatsPage } from '../chats/chats';
+import { ChatsPage } from './../../pages/chats/chats';
 
 @Component({
   selector: 'messages-options',

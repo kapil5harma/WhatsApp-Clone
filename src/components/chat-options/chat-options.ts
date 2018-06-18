@@ -6,8 +6,8 @@ import {
   ViewController
 } from 'ionic-angular';
 import { PhoneService } from '../../services/phone';
-import { LoginPage } from '../login/login';
-import { ProfilePage } from '../profile/profile';
+import { LoginPage } from './../../pages/login/login';
+import { ProfilePage } from './../../pages/profile/profile';
 
 @Component({
   selector: 'chat-options',
