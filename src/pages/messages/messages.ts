@@ -30,6 +30,7 @@ export class MessagesPage implements OnInit, OnDestroy {
   senderId: string;
   loadingMessages: boolean;
   messagesComputation: Subscription;
+  messagesBatchCounter: number = 0;
 
   constructor(
     public navCtrl: NavController,
@@ -88,17 +89,19 @@ export class MessagesPage implements OnInit, OnDestroy {
     // new dataset is fetched
     this.scrollOffset = this.scroller.scrollHeight;
 
-    MeteorObservable.subscribe('messages', this.selectedChat._id).subscribe(
-      () => {
-        // Keep tracking changes in the dataset and re-render the view
-        if (!this.messagesComputation) {
-          this.messagesComputation = this.autorunMessages();
-        }
-
-        // Allow incoming subscription requests
-        this.loadingMessages = false;
+    MeteorObservable.subscribe(
+      'messages',
+      this.selectedChat._id,
+      ++this.messagesBatchCounter
+    ).subscribe(() => {
+      // Keep tracking changes in the dataset and re-render the view
+      if (!this.messagesComputation) {
+        this.messagesComputation = this.autorunMessages();
       }
-    );
+
+      // Allow incoming subscription requests
+      this.loadingMessages = false;
+    });
   }
 
   // Detects changes in the messages dataset and re-renders the view
