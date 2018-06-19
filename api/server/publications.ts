@@ -18,20 +18,25 @@ Meteor.publish('users', function(): Mongo.Cursor<User> {
   );
 });
 
-// Meteor.publish('messages', function(chatId: string): Mongo.Cursor<Message> {
-//   if (!this.userId || !chatId) {
-//     return;
-//   }
+Meteor.publish('messages', function(
+  chatId: string,
+  messagesBatchCounter: number
+): Mongo.Cursor<Message> {
+  if (!this.userId || !chatId) {
+    return;
+  }
 
-//   return Messages.collection.find(
-//     {
-//       chatId
-//     },
-//     {
-//       sort: { createdAt: -1 }
-//     }
-//   );
-// });
+  return Messages.collection.find(
+    {
+      chatId
+    },
+    {
+      sort: { createdAt: -1 },
+      limit: 30 * messagesBatchCounter
+    }
+  );
+});
+
 Meteor['publishComposite']('chats', function(): PublishCompositeConfig<Chat> {
   // Meteor.publishComposite('chats', function(): PublishCompositeConfig<Chat> {
   if (!this.userId) {
